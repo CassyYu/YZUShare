@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./login.css">
+    <title>YZUShare</title>
+</head>
+
+<body>
+<div class="container">
+    <div class="box login">
+        <div class="form-content">
+            <div class="avtar">
+                <div class="pic"><img src="./img/avtar.jpg" alt="avtar"></div>
+            </div>
+            <h1>Login</h1>
+            <form id="fm-login" action="/LoginServlet" method="post" class="form">
+                <div class="input-box">
+                    <i class="fa fa-user-o"></i>
+                    <input type="text" placeholder="用户名" name="uname" id="uname">
+                    <i class="fa fa-times icon1" aria-hidden="true"></i>
+                    <i class="fa fa-check icon2" aria-hidden="true"></i>
+                </div>
+                <div class="input-box">
+                    <i class="fa fa-key"></i>
+                    <input type="password" placeholder="密码" name="upwd" id="upwd">
+                    <i class="fa fa-times icon1" aria-hidden="true"></i>
+                    <i class="fa fa-check icon2" aria-hidden="true"></i>
+                </div>
+                <div class="btn" name="" id="signup-btn">
+                    <button>提交</button>
+                </div>
+            </form>
+            <p class="btn-something">
+                还没有账号？ <span class="signupbtn">立即注册</span>
+            </p>
+        </div>
+    </div>
+    <div class="box signup">
+        <div class="form-content">
+            <div class="avtar">
+                <div class="pic"><img src="./img/avtar.jpg" alt=""></div>
+            </div>
+            <h1>Register</h1>
+            <form action="/RegisterServlet" method="post" class="form">
+                <div class="input-box">
+                    <i class="fa fa-user-o"></i>
+                    <input type="text" placeholder="用户名" name="uname" id="uname1">
+                    <i class="fa fa-times icon1" aria-hidden="true"></i>
+                    <i class="fa fa-check icon2" aria-hidden="true"></i>
+                </div>
+                <div class="input-box">
+                    <i class="fa fa-key"></i>
+                    <input type="text" placeholder="密码" name="upwd" id="upwd1">
+                    <i class="fa fa-times icon1" aria-hidden="true"></i>
+                    <i class="fa fa-check icon2" aria-hidden="true"></i>
+                </div>
+                <div class="input-box">
+                    <i class="fa fa-envelope-o"></i>
+                    <input type="email" placeholder="邮箱" name="email" id="email1">
+                    <i class="fa fa-times icon1" aria-hidden="true"></i>
+                    <i class="fa fa-check icon2" aria-hidden="true"></i>
+                </div>
+                <div class="input-box">
+                    <i class="fa fa-phone"></i>
+                    <input type="text" placeholder="手机" name="phone" id="phone1">
+                    <i class="fa fa-times icon1" aria-hidden="true"></i>
+                    <i class="fa fa-check icon2" aria-hidden="true"></i>
+                </div>
+                <div class="btn">
+                    <button>提交</button>
+                </div>
+            </form>
+            <p class="btn-something">
+                已经有账号了？ <span class="loginbtn">立即登陆</span>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="circle1"></div>
+<div class="circle2"></div>
+<script src="/user/js/jquery-3.1.1.min.js"></script>
+<script>
+
+    var inputBox = document.getElementsByClassName("input-box");
+    var icon1 = document.getElementsByClassName("icon1");
+    var icon2 = document.getElementsByClassName("icon2");
+
+    $("#uname").blur(function () {
+        var data = $("#uname").val();//获取了该input标签中的数据
+        if (data == null || data == "") {
+            $("#uname").attr('placeholder', '用户名不能为空');
+            icon1[0].setAttribute("style", "display: inline;");
+            inputBox[0].setAttribute("style", "animation: shake 0.2s linear;");
+            setTimeout(function () {
+                icon1[0].setAttribute("style", "display: none;");
+                inputBox[0].setAttribute("style", "animation: none;");
+                $("#uname").attr('placeholder', '用户名');
+            }, 900)
+        } else {
+            $.ajax({
+                //请求方式
+                type: "POST",
+                //请求地址
+                url: "/CheckUnameServlet",
+                //请求参数
+                data: "uname=" + data,
+                //请求成功
+                success: function (msg) {
+                    //msg:服务器响应内容
+                    if ("yes" == msg) {
+                        icon2[0].setAttribute("style", "display: inline;");
+                    } else if ("no" == msg) {
+                        $("#uname").val("");
+                        $("#uname").attr('placeholder', '用户名不存在');
+                        icon1[0].setAttribute("style", "display: inline;");
+                        inputBox[0].setAttribute("style", "animation: shake 0.2s linear;");
+                        setTimeout(function () {
+                            icon1[0].setAttribute("style", "display: none;");
+                            inputBox[0].setAttribute("style", "animation: none;");
+                            $("#uname").attr('placeholder', '用户名');
+                        }, 900)
+                    }
+                },
+                //请求失败
+                error: function () {
+                }
+            });
+        }
+    });
+
+    $("#uname1").blur(function () {
+        var data = $("#uname1").val();//获取了该input标签中的数据
+        if (data == null || data == "") {
+            $("#uname1").attr('placeholder', '用户名不能为空');
+            icon1[2].setAttribute("style", "display: inline;");
+            inputBox[2].setAttribute("style", "animation: shake 0.2s linear;");
+            setTimeout(function () {
+                icon1[2].setAttribute("style", "display: none;");
+                inputBox[2].setAttribute("style", "animation: none;");
+                $("#uname1").attr('placeholder', '用户名');
+            }, 900)
+        } else {
+            $.ajax({
+                //请求方式
+                type: "POST",
+                //请求地址
+                url: "/CheckUnameServlet",
+                //请求参数
+                data: "uname=" + data,
+                //请求成功
+                success: function (msg) {
+                    //msg:服务器响应内容
+                    if ("no" == msg) {
+                        icon2[2].setAttribute("style", "display: inline;");
+                    } else if ("yes" == msg) {
+                        $("#uname1").val("");
+                        $("#uname1").attr('placeholder', '用户名存在');
+                        icon1[2].setAttribute("style", "display: inline;");
+                        inputBox[2].setAttribute("style", "animation: shake 0.2s linear;");
+                        setTimeout(function () {
+                            icon1[2].setAttribute("style", "display: none;");
+                            inputBox[2].setAttribute("style", "animation: none;");
+                            $("#uname1").attr('placeholder', '用户名');
+                        }, 900)
+                    }
+                },
+                //请求失败
+                error: function () {
+                }
+            });
+        }
+    });
+
+    $("#upwd1").blur(function () {
+        var data = $("#upwd1").val();//获取了该input标签中的数据
+        if (data == null || data == "") {
+            $("#upwd1").attr('placeholder', '密码不能为空');
+            icon1[3].setAttribute("style", "display: inline;");
+            inputBox[3].setAttribute("style", "animation: shake 0.2s linear;");
+            setTimeout(function () {
+                icon1[3].setAttribute("style", "display: none;");
+                inputBox[3].setAttribute("style", "animation: none;");
+                $("#upwd1").attr('placeholder', '密码');
+            }, 900)
+        } else {
+            icon2[3].setAttribute("style", "display: inline;");
+        }
+    });
+
+    $("#email1").blur(function () {
+        var data = $("#email1").val();//获取了该input标签中的数据
+        if (data == null || data == "") {
+            $("#email1").attr('placeholder', '邮箱不能为空');
+            icon1[4].setAttribute("style", "display: inline;");
+            inputBox[4].setAttribute("style", "animation: shake 0.2s linear;");
+            setTimeout(function () {
+                icon1[4].setAttribute("style", "display: none;");
+                inputBox[4].setAttribute("style", "animation: none;");
+                $("#email1").attr('placeholder', '邮箱');
+            }, 900)
+        } else {
+            icon2[4].setAttribute("style", "display: inline;");
+        }
+    });
+
+    $("#phone1").blur(function () {
+        var data = $("#phone1").val();//获取了该input标签中的数据
+        if (data == null || data == "") {
+            $("#phone1").attr('placeholder', '手机号不能为空');
+            icon1[5].setAttribute("style", "display: inline;");
+            inputBox[5].setAttribute("style", "animation: shake 0.2s linear;");
+            setTimeout(function () {
+                icon1[5].setAttribute("style", "display: none;");
+                inputBox[5].setAttribute("style", "animation: none;");
+                $("#phone1").attr('placeholder', '手机号');
+            }, 900)
+        } else {
+            $.ajax({
+                //请求方式
+                type: "POST",
+                //请求地址
+                url: "/CheckPhoneServlet",
+                //请求参数
+                data: "phone=" + data,
+                //请求成功
+                success: function (msg) {
+                    //msg:服务器响应内容
+                    if ("no" == msg) {
+                        icon2[5].setAttribute("style", "display: inline;");
+                    } else if ("yes" == msg) {
+                        $("#phone1").val("");
+                        $("#phone1").attr('placeholder', '手机号存在');
+                        icon1[5].setAttribute("style", "display: inline;");
+                        inputBox[5].setAttribute("style", "animation: shake 0.2s linear;");
+                        setTimeout(function () {
+                            icon1[5].setAttribute("style", "display: none;");
+                            inputBox[5].setAttribute("style", "animation: none;");
+                            $("#phone1").attr('placeholder', '手机号');
+                        }, 900)
+                    }
+                },
+                //请求失败
+                error: function () {
+                }
+            });
+        }
+    });
+
+    // $('#signup-btn').submit(function () {
+    //     //读取用户的输入——表单序列化
+    //     var inputData = $('#fm-login').serialize();
+    //     //异步提交请求，进行验证
+    //     console.log("inputData:" + inputData);
+    //     $.ajax({
+    //         async: true,
+    //         type: 'POST',
+    //         url: '/LoginServlet',
+    //         data: inputData,
+    //         success: function (txt, msg, xhr) {
+    //             if (txt == 'yes') {  //登录成功
+    //                 window.location.href = "/AllResourceServlet";
+    //             } else { //登录失败
+    //                 alert("密码错误");
+    //                 window.location.href = "/login.html"
+    //             }
+    //         },
+    //         error: function () {
+    //             alert("系统出错");
+    //         }
+    //     });
+    // });
+
+
+</script>
+
+<script>
+
+    var login = document.querySelector(".login");
+    var signup = document.querySelector(".signup");
+
+    var loginbtn = document.querySelector(".loginbtn");
+    var siginupbtn = document.querySelector(".signupbtn");
+
+    var container = document.querySelector(".container");
+
+    siginupbtn.addEventListener("click", function () {
+        login.style.transform = "rotateY(180deg)"
+        signup.style.transform = "rotateY(0deg)";
+        container.setAttribute("style", "backdrop-filter: blur(0rem);");
+        setTimeout(function () {
+            container.setAttribute("style", "backdrop-filter: blur(1rem);");
+        }, 400);
+    });
+
+    loginbtn.addEventListener("click", function () {
+        login.style.transform = "rotateY(0deg)"
+        signup.style.transform = "rotateY(-180deg)";
+        container.setAttribute("style", "backdrop-filter: blur(0rem);");
+        setTimeout(function () {
+            container.setAttribute("style", "backdrop-filter: blur(1rem);");
+        }, 400);
+    });
+</script>
+</body>
+
+</html>

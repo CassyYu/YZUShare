@@ -1,0 +1,340 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+main {
+    height: 100vh;
+    background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.glass {
+    height: 80vh;
+    width: 75vw;
+    background: linear-gradient(
+            to right bottom,
+            rgba(255, 255, 255, 0.7),
+            rgba(255, 255, 255, 0.3)
+    );
+    border-radius: 2rem;
+    z-index: 2;
+    backdrop-filter: blur(1rem);
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard {
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(
+            to right bottom,
+            rgba(255, 255, 255, 0.7),
+            rgba(255, 255, 255, 0.3)
+    );
+    border-radius: 2rem;
+}
+
+.user {
+    margin-top: 1rem;
+}
+
+.user img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #3399ff;
+}
+
+.user > span:nth-child(2) {
+    display: block;
+    color: #426696;
+    font-weight: 600;
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.user > span:nth-child(3) {
+    display: block;
+    color: #658ec6;
+    font-weight: 500;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.link {
+    margin: 3rem 0 0 0;
+    padding: .5rem .5rem .5rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    background: linear-gradient(
+            to right bottom,
+            rgba(255, 255, 255, 0.7),
+            rgba(255, 255, 255, 0.3)
+    );
+    color: #426696;
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+}
+
+.links a:nth-child(1) div {
+    margin-top: 1rem;
+}
+
+.link span {
+    padding: 0 1rem;
+    white-space: nowrap;
+    color: #658ec6;
+    font-weight: 500;
+    font-size: 1.3rem;
+    opacity: 0.8;
+}
+
+.link i {
+    display: inline-block;
+    color: #658ec6;
+    transform: scale(1.4);
+}
+
+.links a:hover div {
+    background: linear-gradient(
+            to right bottom,
+            rgba(255, 255, 255, 0.8),
+            rgba(255, 255, 255, 0.2)
+    );
+    box-shadow: 3px 3px 10px rgba(122, 122, 122, 0.212);
+}
+
+.links a:hover * {
+    color: #426696;
+}
+
+.links > div * {
+    color: rgb(230, 139, 184);
+}
+
+.links > div {
+    box-shadow: 1px 1px 2px rgba(122, 122, 122, 0.212);
+}
+
+.reward {
+    width: 70%;
+    margin: 1rem 2rem 0 2rem;
+    padding: 2rem 6rem 2rem 1rem;
+    background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+    border-radius: 2rem;
+    position: relative;
+    display: flex;
+    color: white;
+    text-align: left;
+    font-weight: 600;
+}
+
+.reward img {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 25px;
+    right: 15px;
+}
+
+.head {
+    width: 75%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+}
+
+.logo {
+    margin: 1rem 2.5rem;
+    color: #658ec6;
+    font-weight: 600;
+    font-size: 2.5rem;
+    opacity: 0.8;
+}
+
+.head > i {
+    position: absolute;
+    top: 38px;
+    left: 45px;
+    color: #658ec6;
+}
+
+input {
+    margin: 2rem 11rem 2rem 2rem;
+    background: linear-gradient(
+            to right bottom,
+            rgba(255, 255, 255, 0.7),
+            rgba(255, 255, 255, 0.3)
+    );
+    border: none;
+    outline: none;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 2rem;
+    flex-grow: 1;
+    color: #658ec6;
+}
+
+form {
+    position: relative;
+}
+
+form button {
+    margin: 2rem 8rem;
+    padding: 5px 10px;
+    border: none;
+    color: #658ec6;
+    border-radius: 2rem;
+    position: absolute;
+    left: 200px;
+    top: 2.5px;
+    background: none;
+    cursor: pointer;
+}
+
+.source {
+    position: relative;
+    left: 25%;
+    top: 63px;
+    height: 541px;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    overflow-y: scroll;
+}
+
+.cards {
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.card {
+    background: linear-gradient(
+            to left top,
+            rgba(255, 255, 255, 0.8),
+            rgba(255, 255, 255, 0.5)
+    );
+    border-radius: 1rem;
+    margin: 1.3rem 0;
+    padding: 1rem 1rem 1rem 6.5rem;
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 73%;
+    position: relative;
+}
+
+.card > span {
+    color: #658ec6;
+    margin-bottom: 5px;
+}
+
+.card > span:nth-child(2) {
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+.card > span:nth-child(3) {
+    font-size: 16px;
+}
+
+.card > span:nth-child(4) {
+    display: flex;
+    font-size: 14px;
+}
+
+.card > span > span {
+    flex: 1;
+}
+
+.card button {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    height: 30%;
+    width: 60px;
+    background: linear-gradient(
+            to left top,
+            rgba(255, 255, 255, 0.8),
+            rgba(255, 255, 255, 0.5)
+    );
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 4px 4px 10px rgba(122, 122, 122, 0.212);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #658ec6;
+    font-size: 16px;
+}
+
+.card button:active {
+    box-shadow: 1px 1px 2px #ddd;
+}
+
+.order {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    height: 60%;
+    width: 60px;
+    background: linear-gradient(
+            to left top,
+            rgba(255, 255, 255, 0.8),
+            rgba(255, 255, 255, 0.5)
+    );
+    border-radius: 1rem;
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #658ec6;
+    font-weight: bolder;
+    font-family: monospace;
+    font-size: 18px;
+}
+
+.circle1,
+.circle2 {
+    background: white;
+    background: linear-gradient(
+            to right bottom,
+            rgba(255, 255, 255, 0.8),
+            rgba(255, 255, 255, 0.3)
+    );
+    height: 20rem;
+    width: 20rem;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.circle1 {
+    top: 1%;
+    right: 3%;
+}
+
+.circle2 {
+    bottom: 2%;
+    left: 2%;
+}
